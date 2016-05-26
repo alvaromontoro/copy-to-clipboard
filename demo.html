@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+
+	<head>
+	
+		<title>Copy To Clipboard - Demo</title>
+		
+		<script>
+		function copyToClipboard(elementId) {
+			var aux = document.createElement("input");
+			aux.setAttribute("value", document.getElementById(elementId).innerHTML || document.getElementById(elementId).value);
+			document.body.appendChild(aux);
+			aux.select();
+			document.execCommand("copy");
+			document.body.removeChild(aux);
+		}
+		</script>
+		
+		<style>
+		textarea, input { width:400px; display:block; padding:0px; margin-bottom:20px; }
+		</style>
+	
+	</head>
+	
+	<body>
+	
+		<p>There is a <a href="http://stackoverflow.com/a/30905277/3695983">detailed explanation of this method on my answer at StackOverflow</a>.</p>
+	
+		<textarea id="text1" placeholder="Write some text here, then click on the button below"></textarea>
+		<input type="button" onclick="copyToClipboard('text1')" value="Copy the text from the top textarea into the clipboard" />
+		<textarea placeholder="Paste in this textarea to test that the text was copied correctly"></textarea>
+	
+	</body>
+
+</html>
